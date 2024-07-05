@@ -1,0 +1,77 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100svh;
+    background-color: rgb(148, 136, 136);
+    align-items: center;
+    overflow: hidden;
+}
+.writeup{
+    margin: 20px;
+    margin-left: 25%;
+    align-items: center;
+    background: linear-gradient(rgba(121, 92, 38, 0.5), rgba(160, 25, 25, 0.5));
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 40%;
+}
+
+input{
+    width: 50%;
+    height: 50px;
+    margin: 20px 10px 10px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: black;
+    border: solid brown 2px;
+}
+
+button{
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: solid black 2px;
+    background-color: brown;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#tile {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    height: 20%;
+    flex-wrap: wrap;
+
+}
+.tiles{
+    background-color: brown;
+    padding: 10px;
+    border-radius: 10px;
+    height: 100%;
+    width:150px;
+    margin-left: 10px;
+    
+}
+
+#tile p{
+    color: black;
+    border-radius: 10px;
+    background-color: grey;
+    font-size: 20px;
+    padding: 5px;
+    margin-top: -3px;
+    text-align: center;
+    height: 8%;
+}
+
+#tile img{
+    height: 90%;
+    width: 100%;
+    margin-bottom: 0px;
+    border-radius: 10px;
+}
