@@ -1,0 +1,294 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+            
+}
+header{
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    
+    
+
+}
+.first i{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.first{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 25px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.first img{
+    width: 100px;
+    height: auto;
+}
+
+#searchbar {
+    display: flex;
+    align-items: center;
+} 
+
+#searchbar input{
+    font-size: 15px;
+    padding:8px 14px;
+    outline: none;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 100px;
+    width: 600px;
+}
+
+#searchbar button {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: none;
+    border-left: 1px solid grey;
+    height: 46px;
+    width: 65px;
+    padding:0 15px;
+    color: rgb(150, 150, 150);
+    cursor: pointer;
+    background-color: rgb(237, 237, 237);
+    position: relative;
+    right: 67px;
+    
+}
+
+.fa-solid.fa-microphone{
+    background-color: rgb(237, 237, 237);
+    border-radius: 15px;
+    padding: 12px;
+    position: relative;
+    right: 50px;
+    cursor: pointer;
+}
+
+input{
+    width: 600px;
+    height: 30px;
+  border: 2px solid black;
+    border-radius: 80px;
+}
+
+.third{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+
+.third img{
+    border-radius: 180px;
+    width: 40px;
+    height: 40px;
+    
+}
+.third i{
+    font-size: 30px;
+}
+
+nav{
+    height: 50px;
+    width: 79%;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    
+}
+.el{
+    border-radius:15px;
+    padding: 10px 20px;
+    background-color: lightgray;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.current, .el:hover{
+    background-color: black;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.sec:hover{
+
+    background-color: rgb(223, 215, 215);
+    border-radius: 10px;
+}
+.sidebar{
+    float: left;
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    }
+
+.one{
+width: 100%;
+border-bottom: 1px solid black;
+opacity: 90%;
+font-size: 15px;
+
+}
+
+.two{
+    width: 100%;
+    opacity: 90%;
+    font-size: 15px;
+    
+    }
+
+.sec{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.sec i{
+    font-size: 20px;
+    margin-left: 30px;
+}
+.sec img{
+    width: 30px;
+    height: 30px;
+    border-radius: 180px;
+    margin-left: 28px;
+    position: relative;
+}
+
+.dot i{
+    font-size: 8px;
+    position: relative;
+    color: rgb(26, 161, 202);
+}
+.you{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+}
+.you h2{
+    margin-left: 30px;
+}
+
+
+
+
+#main{
+    
+    width: 80%;
+    height: 100vh;
+    float: right;
+    overflow: hidden;
+    overflow-y: scroll;
+    row-gap: 120px;
+    column-gap: 0px;
+    box-sizing: border-box;
+    
+
+}
+
+.main1, .main2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    margin: 5px;
+    margin-bottom: 120px;
+}
+.content{
+    width: 25%;
+    height: 200px;
+    box-sizing: border-box;
+    margin: 10px 0px;
+    padding: 5px;
+    
+       
+}
+.content p{
+    margin-top: 0px;
+    text-align: justify;
+    margin-left: 40px;
+    opacity: 70%;
+    cursor: pointer;
+}
+
+#big{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#small{
+    width: 13%;
+    border-radius: 30px;
+}
+
+.time{
+    position: relative;
+    bottom: 50px;
+    right: 5px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    opacity: 70%;
+    padding: 5px;
+}
+
+.sub{
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    margin: 0px;
+    padding: 0;
+    cursor: pointer;
+    
+}
+.sub h2{
+    width: 80%;
+    margin-left: 5px;
+    font-size: 20px;
+    text-align: justify;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+.menu{
+    position: relative;
+    left: 95%;
+    bottom: 110px;
+    font-size: 40px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.content:hover .menu{
+    visibility: visible;
+    
+}
