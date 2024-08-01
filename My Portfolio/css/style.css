@@ -179,7 +179,7 @@ a{
 }
 
 .resume{
-    height: 100svh;
+    /* height: 100svh; */
 }
 iframe{
     width: 40%;
@@ -223,12 +223,12 @@ iframe{
     margin-top: 5px;
 }
 
-.portfolio a{
+.portfolio a, .resume a{
     color: rgba(172, 255, 47, 0.801);
     width: 23%;
 }
 
-.project-card a:hover{
+.project-card a:hover, .resume a:hover{
     color: wheat;
 }
 
@@ -325,6 +325,7 @@ footer{
         box-sizing: border-box;
         width: 100%;
         float: none;
+        justify-content: center;
         text-align: center;
         align-items: center;
         
