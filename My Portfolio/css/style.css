@@ -145,6 +145,8 @@ a{
 
 
 /* Skills */
+
+
 .progress{
     display: flex;
     gap: 30px;
@@ -347,6 +349,7 @@ footer{
     
     #navmenu ul{
         display: flex;
+        justify-content: center;
         align-items: center;
         text-align: center;
                 
@@ -359,8 +362,8 @@ footer{
     }
 
     .social{
-        display: block;
-        justify-content: space-between;
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
 
