@@ -136,6 +136,7 @@ a{
     margin: 0px;
     border-radius: 15px;
     border: dashed 20px;
+    width: 100%;
 }
 
 .details li{
@@ -227,7 +228,6 @@ iframe{
 
 .project-card a:hover{
     color: wheat;
-    font-weight: bold;
 }
 
 .con{
@@ -318,8 +318,9 @@ footer{
 
 
 @media(max-width: 768px){
-    body, .about, .portfolio h3, .portfolio p{
+    body, .about, iframe, .portfolio h3, .portfolio p, .details{
         display: block;
+        box-sizing: border-box;
         width: 100%;
         float: none;
         text-align: center;
@@ -370,6 +371,8 @@ footer{
     .menbut{
         display: block;
     }
+
+    
 }
 
 
