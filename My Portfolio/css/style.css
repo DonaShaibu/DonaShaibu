@@ -329,6 +329,10 @@ footer{
     
     }
 
+    .text h1{
+        margin-top: 0px;
+    }
+
     #header{
         width: 100%;
         display: none;
@@ -350,6 +354,7 @@ footer{
 
     #navmenu li{
         font-size: 20px;
+        padding: 0px;
         
     }
 
