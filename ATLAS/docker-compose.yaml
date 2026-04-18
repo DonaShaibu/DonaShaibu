@@ -1,0 +1,510 @@
+services:
+
+  # ----------------------- START AKASH ----------------------- #
+  akash-backend:
+    container_name: akash-backend
+    build:
+      context: ./backend
+      dockerfile: akash/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.akash-backend.rule=Host(`pbeakash.atlas-staking.com`)"
+      - "traefik.http.routers.akash-backend.entrypoints=websecure"
+      - "traefik.http.routers.akash-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  akash-logic:
+    container_name: akash-logic
+    build:
+      context: ./backend
+      dockerfile: akash/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END AKASH ----------------------- #
+
+  # ----------------------- START BABYLON ----------------------- #
+  babylon-backend:
+    container_name: babylon-backend
+    build:
+      context: ./backend
+      dockerfile: babylon/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.babylon-backend.rule=Host(`pbebabylon.atlas-staking.com`)"
+      - "traefik.http.routers.babylon-backend.entrypoints=websecure"
+      - "traefik.http.routers.babylon-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  babylon-logic:
+    container_name: babylon-logic
+    build:
+      context: ./backend
+      dockerfile: babylon/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END BABYLON ----------------------- #
+
+  # ----------------------- START BAND ----------------------- #
+  band-backend:
+    container_name: band-backend
+    build:
+      context: ./backend
+      dockerfile: band/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.band-backend.rule=Host(`pbeband.atlas-staking.com`)"
+      - "traefik.http.routers.band-backend.entrypoints=websecure"
+      - "traefik.http.routers.band-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  band-logic:
+    container_name: band-logic
+    build:
+      context: ./backend
+      dockerfile: band/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END BAND ----------------------- #
+
+  # ----------------------- START ELYS ----------------------- #
+  elys-backend:
+    container_name: elys-backend
+    build:
+      context: ./backend
+      dockerfile: elys/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elys-backend.rule=Host(`pbeelys.atlas-staking.com`)"
+      - "traefik.http.routers.elys-backend.entrypoints=websecure"
+      - "traefik.http.routers.elys-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  elys-logic:
+    container_name: elys-logic
+    build:
+      context: ./backend
+      dockerfile: elys/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END ELYS ----------------------- #
+
+  # ----------------------- START KAVA ----------------------- #
+  kava-backend:
+    container_name: kava-backend
+    build:
+      context: ./backend
+      dockerfile: kava/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kava-backend.rule=Host(`pbekava.atlas-staking.com`)"
+      - "traefik.http.routers.kava-backend.entrypoints=websecure"
+      - "traefik.http.routers.kava-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  kava-logic:
+    container_name: kava-logic
+    build:
+      context: ./backend
+      dockerfile: kava/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END KAVA ----------------------- #
+
+  # ----------------------- START LAVA ----------------------- #
+  lava-backend:
+    container_name: lava-backend
+    build:
+      context: ./backend
+      dockerfile: lava/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lava-backend.rule=Host(`pbelava.atlas-staking.com`)"
+      - "traefik.http.routers.lava-backend.entrypoints=websecure"
+      - "traefik.http.routers.lava-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  lava-logic:
+    container_name: lava-logic
+    build:
+      context: ./backend
+      dockerfile: lava/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END LAVA ----------------------- #
+
+  # ----------------------- START OSMOSIS ----------------------- #
+  osmosis-backend:
+    container_name: osmosis-backend
+    build:
+      context: ./backend
+      dockerfile: osmosis/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.osmosis-backend.rule=Host(`pbeosmosis.atlas-staking.com`)"
+      - "traefik.http.routers.osmosis-backend.entrypoints=websecure"
+      - "traefik.http.routers.osmosis-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  osmosis-logic:
+    container_name: osmosis-logic
+    build:
+      context: ./backend
+      dockerfile: osmosis/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END OSMOSIS ----------------------- #
+
+  # ----------------------- START SEDA ----------------------- #
+  seda-backend:
+    container_name: seda-backend
+    build:
+      context: ./backend
+      dockerfile: seda/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.seda-backend.rule=Host(`pbeseda.atlas-staking.com`)"
+      - "traefik.http.routers.seda-backend.entrypoints=websecure"
+      - "traefik.http.routers.seda-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  seda-logic:
+    container_name: seda-logic
+    build:
+      context: ./backend
+      dockerfile: seda/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END SEDA ----------------------- #
+
+  # ----------------------- START STRIDE ----------------------- #
+  stride-backend:
+    container_name: stride-backend
+    build:
+      context: ./backend
+      dockerfile: stride/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.stride-backend.rule=Host(`pbestride.atlas-staking.com`)"
+      - "traefik.http.routers.stride-backend.entrypoints=websecure"
+      - "traefik.http.routers.stride-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  stride-logic:
+    container_name: stride-logic
+    build:
+      context: ./backend
+      dockerfile: stride/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END STRIDE ----------------------- #
+
+  # ----------------------- START FETCH ----------------------- #
+  fetch-backend:
+    container_name: fetch-backend
+    build:
+      context: ./backend
+      dockerfile: fetch/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fetch-backend.rule=Host(`pbefetch.atlas-staking.com`)"
+      - "traefik.http.routers.fetch-backend.entrypoints=websecure"
+      - "traefik.http.routers.fetch-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  fetch-logic:
+    container_name: fetch-logic
+    build:
+      context: ./backend
+      dockerfile: fetch/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END FETCH ----------------------- #
+
+  # ----------------------- START MAIN BACKEND ----------------------- #
+  pbemain-backend:
+    container_name: pbemain_backend
+    build:
+      context: ./backend
+      dockerfile: main_backend/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+      - PORT=8080
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pbemain-backend.rule=Host(`pbemain.atlas-staking.com`)"
+      - "traefik.http.routers.pbemain-backend.entrypoints=websecure"
+      - "traefik.http.routers.pbemain-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+
+    networks:
+      - traefik_network
+
+  pbemain-logic:
+    container_name: pbemain_logic
+    build:
+      context: ./backend
+      dockerfile: main_backend/Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@atlas-multichain-db-1/atlas-cosmos
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+    labels:
+      - "traefik.enable=true"
+
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; python logic.py"
+    networks:
+      - traefik_network
+
+  # ----------------------- END MAIN BACKEND ----------------------- #
+
+
+  # DATABASE
+  db:
+    image: postgres:17.0-alpine3.20
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: atlas-cosmos
+    restart: always
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data/"
+    labels:
+      - "traefik.enable=true"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d atlas-cosmos"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - traefik_network
+    command:
+      - "-c"
+      - "max_connections=50"
+
+volumes:
+  postgres_data:
+  # letsencrypt:
+
+networks:
+  traefik_network:
+    external: true
